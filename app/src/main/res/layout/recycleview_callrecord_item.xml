@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/IOimageViewOutGoing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tint="@color/app_accent_primary_color"
+            app:srcCompat="@drawable/ic_round_call_made_40" />
+
+        <ImageView
+            android:id="@+id/IOimageViewReceived"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tint="@color/app_accent_primary_color"
+            app:srcCompat="@drawable/ic_round_call_received_40" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/CallDTtextView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Date Time"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/CallIOtextView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Received Called" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

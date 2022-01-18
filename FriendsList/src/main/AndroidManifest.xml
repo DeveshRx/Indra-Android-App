@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="devesh.friendslist">
+
+    <application>
+        <activity
+            android:name=".FriendsListActivity"
+            android:exported="true"
+            android:label="My Friends"/>
+    </application>
+
+</manifest>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="FLAVOR_PLAY_STORE" translatable="false">PlayStore</string>
+    <string name="FLAVOR_GALAXY_STORE" translatable="false">GalaxyStore</string>
+
+</resources>

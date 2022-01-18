@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="notification_channel_id_call">notification_channel_id_call</string>
+    <string name="notification_channel_id_missed_call">notification_channel_id_missed_call</string>
+
+
+    <string name="notification_channel_id_missed_call_text">Missed Called</string>
+    <string name="notification_channel_id_call_text">Incoming Call</string>
+    <string name="notification_channel_id_ping">pingnotification</string>
+
+
+    <!-- -->
+    <string name="notification_FCM_Topic_General">general</string>
+
+    <!-- types of notifications -->
+</resources>

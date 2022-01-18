@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="BG_Blank">#00000000</color>
+
+    <color name="app_accent_primary_color">@color/primaryLightColor</color>
+    <color name="app_accent_color">@color/secondaryColor</color>
+
+</resources>

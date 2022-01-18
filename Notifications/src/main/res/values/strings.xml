@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="DATABASE_NOTIFICATION">notificationsdata.db</string>
+    <string name="notification_channel_id_general">generalnotification</string>
+
+    <!-- types of notifications -->
+    <string name="NOTIFICATION_NORMAL">notification</string>
+    <string name="NOTIFICATION_APP_UPDATE">app_update</string>
+</resources>

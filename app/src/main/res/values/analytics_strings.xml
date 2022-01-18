@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ANALYTICS_EVENT_NAME_APP_FLOW">App_Flow</string>
+    <string name="ANALYTICS_EVENT_NAME_USER_FLOW">User_Flow</string>
+
+    <string name="ANALYTICS_EVENT_APP_SYSTEM_EVENTS">App_System_Event</string>
+
+</resources>

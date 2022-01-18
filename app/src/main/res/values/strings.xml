@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Indra</string>
+
+
+    <string name="create_room_id">createroomid</string>
+    <string name="join_room_id">joinroomid</string>
+    <string name="intent_iscall_screen">iscallscreen</string>
+    <string name="intent_Caller_User_Name">intentCallerUserName</string>
+    <string name="intent_Caller_Phone">intentCallerPhone</string>
+
+    <string name="intent_twilio_un">intenttwilioun</string>
+    <string name="intent_twilio_pw">intenttwiliopw</string>
+
+
+    <string name="contact2Id">ContactToPerson</string>
+    <string name="DATABASE_APP_USER_DB">UserDBRoom</string>
+    <string name="DATABASE_CALL_RECORDS">CallRecords.db</string>
+
+    <string name="msg_token_fmt" translatable="false">%s</string>
+
+    <string name="Pref_isAppReviewed">AppReviewed</string>
+    <string name="Pref_ThemeMode">AppThemeMode</string>
+    <string name="Pref_AdsEnabled">adsenabled</string>
+    <string name="Pref_UseTurnServer">PrefUseTurnServer</string>
+    <string name="Pref_UserConfig_TurnServer">PrefUseTurnServer</string>
+
+    <string name="Pref_Twilio_UN">PrefTwilioUN</string>
+    <string name="Pref_Twilio_PW">PrefTwilioPW</string>
+    <string name="Pref_Twilio_TTL_EPOCH">PrefTwilioTTLEPOCH</string>
+
+    <string name="Pref_EligibleForRating">PrefEligibleForRating</string>
+
+
+
+    <!-- calltype:
+    0 = Caller / Create Room
+    1= Receiver / Join Room
+    -->
+    <string name="call_type">calltype</string>
+
+    <!-- -->
+
+    <!--
+    <string name="URL_PEER_HOST">peerjs-nodejs-zkdizdqrqq-uc.a.run.app</string>
+    -->
+
+    <integer name="swipe_anim_speed">400</integer>
+
+    <!--1 = TRUE
+     0 = FALSE
+     -->
+
+    <!--
+    <string name="AdMob_App_Package_Id">com.google.android.gms.ads.APPLICATION_ID</string>
+    <string name="AdMob_App_Id">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="AdMob_Int_Id1">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="AdMob_Banner_Id1">ca-app-pub-3940256099942544/6300978111</string>
+-->
+
+    <string name="settings_screenshot_protection">settings_screenshot_protection</string>
+    <string name="settings_data_saver">settings_data_saver</string>
+
+
+    <string name="UPDATE_APK_WEBSITE">https://indraapp.page.link/update-apk</string>
+
+    <string name="SHARE_WITH_FRIENDS_TEXT">High Quality Video Chat with friends &amp; family with Indra Video Chat \nhttps://indra.ephrine.in \n\n*Screenshot Protection\n*4K Video Quality\n*End-to-End Data Encryption with highest security standards \nAnd much more....\n\nDownload Now: https://play.google.com/store/apps/details?id=devesh.ephrine.indra</string>
+    <string name="SHARE_WITH_FRIENDS_TITLE">Invite friends to Indra</string>
+
+    <!--
+    USER STATUS
+    0 = Unavailable
+    1 = Available
+    2 = On Call
+    3 = Busy
+    4 = DND
+    -->
+<string name="USER_STATUS_UNAVAILABLE">0</string>
+    <string name="USER_STATUS_AVAILABLE">1</string>
+    <string name="USER_STATUS_ON_CALL">2</string>
+    <string name="USER_STATUS_BUSY">3</string>
+    <string name="USER_STATUS_DND">4</string>
+
+    <string name="PREF_USER_CURRENT_STATUS">PrefCurrentStatus</string>
+
+
+    <string name="WebRTC_PEER_ID">webrtcpeerid</string>
+    <string name="WebRTC_CallReceiverID">WebRTCCallReceiverID</string>
+    <string name="WebRTC_SS_Protect">WebRTCSSProtect</string>
+
+
+</resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ListPreference
+        android:defaultValue="System Default"
+        android:entries="@array/theme_day_night"
+        android:entryValues="@array/theme_day_night"
+        android:iconSpaceReserved="false"
+        android:key="@string/Pref_ThemeMode"
+        android:title="Theme"
+        app:iconSpaceReserved="false" />
+
+
+</PreferenceScreen>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Pref_Country_Code_with_Plus">CountryCodeWithPlus</string>
+    <string name="DATABASE_CONTACTS_DB">ContactsDB</string>
+    <string name="DATABASE_FRIENDS_LIST_DB">FriendsListDB.db</string>
+
+    <string name="comm_app_name">Indra</string>
+
+    <string name="URL_PRIVACY_SECURITY_FEATURE">https://videochat-tech.web.app/privacy-security</string>
+    <string name="URL_getting_started">https://indra.ephrine.in/quick-tutorial</string>
+</resources>

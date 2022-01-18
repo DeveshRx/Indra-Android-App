@@ -1,0 +1,228 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+
+def debug_url_callnow
+def url_callnow
+
+def debug_url_ping
+def url_ping
+
+def url_getprofile
+def debug_url_getprofile
+
+def url_synccontact
+def debug_url_synccontact
+
+def url_send_friend_request
+def debug_url_send_friend_request
+
+
+def admob_app_id
+def admob_ad_int_id
+def admob_ad_banner_id1
+def admob_native_ad1
+
+def debug_apprtc_url
+def apprtc_url
+
+def url_accept_friend_req
+def debug_url_accept_friend_req
+
+def keySignFile
+def keySignPassword
+def keySignAlias
+def keySignAliasPassword
+
+def msAppCenterKey
+
+
+def debug_twilio_config_url
+def twilio_config_url
+
+def isCICD = System.getenv("CI") ?: "false"
+
+//def isinternal
+//isinternal = false
+
+if(isCICD=="true"){
+
+debug_url_callnow = System.getenv("debug_url_callnow")
+url_callnow = System.getenv("url_callnow")
+
+debug_url_getprofile = System.getenv("debug_url_getprofile")
+url_getprofile = System.getenv("url_getprofile")
+
+
+debug_url_ping = System.getenv("debug_url_ping")
+url_ping = System.getenv("url_ping")
+
+
+url_synccontact=System.getenv("url_synccontact")
+debug_url_synccontact=System.getenv("debug_url_synccontact")
+
+
+admob_app_id = System.getenv("admob_app_id")
+admob_ad_int_id = System.getenv("admob_ad_int_id")
+admob_ad_banner_id1 = System.getenv("admob_ad_banner_id1")
+admob_native_ad1 = System.getenv("admob_native_ad1")
+
+debug_apprtc_url = System.getenv("debug_apprtc_url")
+apprtc_url = System.getenv("apprtc_url")
+
+
+url_send_friend_request= "x"
+debug_url_send_friend_request= "x"
+
+msAppCenterKey=System.getenv("msAppCenterKey")
+
+debug_twilio_config_url= System.getenv("debug_twilio_config_url")
+twilio_config_url= System.getenv("twilio_config_url")
+
+
+keySignFile = '/home/runner/work/Indra-Android-App/Indra-Android-App/key.jks'
+
+
+keySignPassword = System.getenv("KEYSIGNPASSWORD")
+keySignAlias = System.getenv("KEYSIGNALIAS")
+keySignAliasPassword = System.getenv("KEYSIGNALIASPASSWORD")
+
+
+}else{
+
+Properties properties = new Properties()
+
+//def lp = new File('local.properties')
+project.logger.info('Located local.properties file')
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+debug_url_callnow = properties.getProperty('debug_url_callnow')
+url_callnow = properties.getProperty('url_callnow')
+
+debug_url_getprofile = properties.getProperty('debug_url_getprofile')
+url_getprofile = properties.getProperty('url_getprofile')
+
+
+debug_url_ping = properties.getProperty('debug_url_ping')
+url_ping = properties.getProperty('url_ping')
+
+
+url_synccontact=properties.getProperty('url_contactsync')
+debug_url_synccontact=properties.getProperty('debug_contactsync_url')
+
+
+admob_app_id = properties.getProperty('admob_app_id')
+admob_ad_int_id = properties.getProperty('admob_ad_int_id')
+admob_ad_banner_id1 = properties.getProperty('admob_ad_banner_id1')
+admob_native_ad1 = properties.getProperty('ad_native1')
+
+debug_apprtc_url = properties.getProperty('debug_apprtc_url')
+apprtc_url = properties.getProperty('apprtc_url')
+
+
+url_send_friend_request= properties.getProperty('url_sendfriendreq')
+debug_url_send_friend_request= properties.getProperty('debug_sendfriendreq_url')
+
+msAppCenterKey=properties.getProperty('ms_app_center_key')
+
+//url_accept_friend_req=properties.getProperty('url_accept_friend_req')
+//debug_url_accept_friend_req=properties.getProperty('debug_url_accept_friend_req')
+
+
+ debug_twilio_config_url= properties.getProperty('debug_twilio_config_url')
+ twilio_config_url= properties.getProperty('twilio_config_url')
+
+if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+    keySignFile = properties.getProperty('keySignFileWin')
+}else{
+    keySignFile = properties.getProperty('keySignFileLinux')
+}
+
+keySignPassword = properties.getProperty('keySignPassword')
+keySignAlias = properties.getProperty('keySignAlias')
+keySignAliasPassword = properties.getProperty('keySignAliasPassword')
+
+}
+
+
+
+project.ext.set("debug_url_callnow", debug_url_callnow)
+project.ext.set("url_callnow", url_callnow)
+project.ext.set("debug_url_getprofile", debug_url_getprofile)
+project.ext.set("url_getprofile", url_getprofile)
+project.ext.set("debug_url_ping", debug_url_ping)
+project.ext.set("url_ping", url_ping)
+
+project.ext.set("url_synccontact", url_synccontact)
+project.ext.set("debug_url_synccontact", debug_url_synccontact)
+
+project.ext.set("url_send_friend_request", url_send_friend_request)
+project.ext.set("debug_url_send_friend_request", debug_url_send_friend_request)
+
+
+project.ext.set("admob_app_id", admob_app_id)
+project.ext.set("admob_ad_int_id", admob_ad_int_id)
+project.ext.set("admob_ad_banner_id1", admob_ad_banner_id1)
+project.ext.set("admob_native_ad1", admob_native_ad1)
+project.ext.set("debug_apprtc_url", debug_apprtc_url)
+project.ext.set("apprtc_url", apprtc_url)
+project.ext.set("msAppCenterKey", msAppCenterKey)
+
+project.ext.set("keySignFile", keySignFile)
+project.ext.set("keySignPassword", keySignPassword)
+project.ext.set("keySignAlias", keySignAlias)
+project.ext.set("keySignAliasPassword", keySignAliasPassword)
+
+project.ext.set("url_accept_friend_req", url_accept_friend_req)
+project.ext.set("debug_url_accept_friend_req", debug_url_accept_friend_req)
+
+
+project.ext.set("debug_twilio_config_url",debug_twilio_config_url )
+project.ext.set("twilio_config_url", twilio_config_url)
+
+project.ext.set("isCICD", isCICD)
+
+
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    String storageUrl = System.env.FLUTTER_STORAGE_BASE_URL ?: "https://storage.googleapis.com"
+
+    repositories {
+
+        google()
+        mavenCentral()
+
+        maven { url 'https://jitpack.io' }
+       /* maven {
+            //url 'D:\\Dev_Projects\\Project-Video-Call\\Indra-Android-App\\flutter_module\\build\\host\\outputs\\repo'
+           // url 'media\\devesh\\Devesh\\Dev_Projects\\Project-Video-Call\\Indra-Android-App\\flutter_module\\build\\host\\outputs\\repo'
+        }
+        maven {
+           // url "$storageUrl/download.flutter.io"
+        }*/
+        maven {
+            url "https://maven.google.com"
+        }
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.0.4'
+   classpath 'com.google.gms:google-services:4.3.10'
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.8.1'
+        classpath 'com.google.firebase:perf-plugin:1.4.0'
+    //    classpath 'com.google.firebase:firebase-appdistribution-gradle:2.2.0'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+allprojects {
+
+
+    repositories {
+      //  google()
+
+      //  jcenter()
+    }
+}
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

@@ -1,0 +1,3 @@
+<resources>
+    <string name="Pref_cache_friend_request">friendRequest.txt</string>
+</resources>

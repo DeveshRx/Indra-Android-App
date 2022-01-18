@@ -1,0 +1,20 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "devesh.ephrine.indra",
+  "variantName": "PlayStoreRelease",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 23,
+      "versionName": "0.0.8.1 (Play Store)",
+      "outputFile": "app-PlayStore-release.apk"
+    }
+  ],
+  "elementType": "File"
+}

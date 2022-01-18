@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="MergeRootFrame">
+
+    <org.webrtc.SurfaceViewRenderer
+        android:id="@+id/fullscreen_video_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center" />
+
+    <ImageView
+        android:id="@+id/AppLogoWatermark"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        app:srcCompat="@drawable/indra_watermark" />
+
+    <ImageView
+        android:id="@+id/GreenScreenImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@color/app_accent_primary_color"
+        app:srcCompat="@color/app_accent_primary_color" />
+
+
+    <org.webrtc.SurfaceViewRenderer
+        android:id="@+id/pip_video_view"
+        android:layout_width="115dp"
+        android:layout_height="175dp"
+        android:layout_above="@id/LLController"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="30dp" />
+
+
+    <LinearLayout
+        android:id="@+id/LLCallingLayer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_profile_black_shadow_inverse"
+        android:orientation="vertical">
+
+        <androidx.legacy.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
+
+        <ImageView
+            android:id="@+id/CallingIMG"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:tint="#004D40"
+            android:visibility="gone"
+
+            app:srcCompat="@drawable/ic_baseline_account_circle_30"
+            app:tint="#004D40"
+            tools:ignore="UseAppTint" />
+
+        <TextView
+            android:id="@+id/CallingNameTextView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="User Name"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="34sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/CallingStatustextView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Calling..."
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/loadingAnimationView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:lottie_rawRes="@raw/material_wave_loading"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/AlertCardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="10dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true"
+            app:contentPadding="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:tint="@android:color/holo_orange_dark"
+                    app:srcCompat="@drawable/ic_baseline_sentiment_very_dissatisfied_30"
+                    android:src="@drawable/ic_baseline_sentiment_very_dissatisfied_30"
+                    />
+
+                <TextView
+                    android:id="@+id/AlertCVText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="TextView" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/MicMuteTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alpha="0.5"
+            android:background="@color/app_accent_color"
+            android:text="Microphone is Mute"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/videoMuteTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alpha="0.5"
+            android:background="@color/app_accent_color"
+            android:text="Video is Mute"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LLController"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/PipFAB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:alpha="0.8"
+                android:clickable="true"
+                android:foregroundTintMode="src_over"
+                android:onClick="PipEnableButton"
+                android:visibility="gone"
+                app:backgroundTint="@color/trans_fab"
+                app:elevation="0dp"
+                app:srcCompat="@drawable/ic_baseline_picture_in_picture_30" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:alpha="0.8"
+                android:clickable="true"
+                android:foregroundTintMode="src_over"
+                android:onClick="toggleVideo"
+                app:backgroundTint="@color/trans_fab"
+                app:elevation="0dp"
+                app:srcCompat="@drawable/ic_baseline_videocam_30" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:alpha="0.8"
+                android:clickable="true"
+                android:onClick="CamSwitch"
+                app:backgroundTint="@color/trans_fab"
+                app:elevation="0dp"
+                app:srcCompat="@drawable/ic_baseline_cameraswitch_36" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:alpha="0.8"
+                android:clickable="true"
+                android:onClick="toggleMic"
+                app:backgroundTint="@color/trans_fab"
+                app:elevation="0dp"
+                app:srcCompat="@drawable/ic_baseline_mic_30" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:alpha="0.8"
+                android:clickable="true"
+                android:onClick="disconnectCallButton"
+                app:backgroundTint="@android:color/holo_red_light"
+                app:elevation="0dp"
+                app:srcCompat="@drawable/disconnect" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/MenuCardView"
+        android:layout_width="250dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:visibility="gone"
+        app:cardCornerRadius="5dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true"
+        app:contentPadding="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Button" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

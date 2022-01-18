@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/LLContact"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:background="?selectableItemBackground"
+    android:clickable="true"
+    android:onClick="SelectContact2Call"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/contactImage"
+
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_weight="0"
+        android:src="@drawable/ic_baseline_person_24"
+        app:civ_border_width="0dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <TextView
+
+            android:id="@+id/contactName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contact Name"
+            android:textSize="16sp" />
+
+        <TextView
+
+            android:id="@+id/contactPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+91 0000000000" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LLAddFriend"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0"
+        android:background="?selectableItemBackground"
+        android:clickable="true"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center|center_horizontal|center_vertical"
+            android:layout_weight="0"
+            android:visibility="visible"
+
+            app:srcCompat="@drawable/ic_round_person_add_30"
+            app:tint="@color/app_accent_color"
+
+            />
+
+
+    </LinearLayout>
+
+</LinearLayout>
+
+

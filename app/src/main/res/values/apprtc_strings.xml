@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Settings strings. -->
+
+    <!--  <string name="pref_room_server_url_default" translatable="false">https://appr.tc</string>
+  -->
+    <!--   <string name="pref_room_server_url_default" translatable="false">https://apprtc-nodejs.herokuapp.com</string>
+   -->
+   <!-- <string name="pref_room_server_url_default" translatable="false">@string/AppRTC_URL</string>
+    -->
+
+
+</resources>

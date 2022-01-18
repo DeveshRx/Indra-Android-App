@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Light Mode-->
+    <color name="TextColorDayNight">#000000</color>
+
+    <color name="BG_Blank">#FFFFFF</color>
+    <color name="app_accent_color">@color/secondaryColor</color>
+    <color name="app_accent_primary_color">@color/primaryDarkColor</color>
+
+</resources>

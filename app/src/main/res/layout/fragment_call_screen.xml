@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primaryDarkColor"
+    android:backgroundTintMode="src_over">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="false"
+        android:layout_marginTop="70dp"
+        android:orientation="vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/CallProfilePic"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/ic_baseline_account_circle_30"
+
+            app:civ_border_width="0dp" />
+
+        <TextView
+            android:id="@+id/VideoCallTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:drawingCacheQuality="auto"
+            android:scrollbarAlwaysDrawHorizontalTrack="false"
+            android:scrollbarAlwaysDrawVerticalTrack="false"
+            android:text="Video Call from"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:drawableLeftCompat="@drawable/ic_baseline_videocam_30" />
+
+        <TextView
+            android:id="@+id/VoiceCallTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:drawingCacheQuality="auto"
+            android:scrollbarAlwaysDrawHorizontalTrack="false"
+            android:scrollbarAlwaysDrawVerticalTrack="false"
+            android:text="Voice Call from"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:drawableLeftCompat="@drawable/ic_baseline_phone_30" />
+
+
+        <TextView
+            android:id="@+id/ReceiverNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="User Name"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/PhoneNoTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="+00 0000000000"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:backgroundTint="#388E3C"
+                android:backgroundTintMode="src_over"
+                android:clickable="true"
+                android:fontFamily="sans-serif-black"
+                android:onClick="CallAccept"
+                android:text="Accept"
+                android:textAlignment="center"
+                app:cornerRadius="15dp"
+                app:icon="@drawable/ic_baseline_phone_30"
+                app:iconSize="30dp" />
+
+            <androidx.legacy.widget.Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:backgroundTint="#D32F2F"
+                android:clickable="true"
+                android:fontFamily="sans-serif-black"
+                android:onClick="CancelCall"
+                android:text="Decline"
+                android:textAlignment="center"
+                app:cornerRadius="15dp"
+                app:icon="@drawable/ic_baseline_call_end_30"
+                app:iconSize="30dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:onClick="CallAccept"
+                app:backgroundTint="#388E3C"
+                app:fabCustomSize="70dp"
+                app:maxImageSize="40dp"
+                app:srcCompat="@drawable/ic_baseline_phone_30"
+                app:tint="#FFFFFF" />
+
+            <androidx.legacy.widget.Space
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:onClick="CancelCall"
+                app:backgroundTint="#D32F2F"
+                app:fabCustomSize="70dp"
+                app:maxImageSize="40dp"
+                app:srcCompat="@drawable/ic_baseline_call_end_30"
+                app:tint="#FFFFFF" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingTop="10dp"
+            android:text="Tap to Answer or Decline"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+
+        <!--     <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Accept"
+            android:textAlignment="textStart"
+            app:icon="@drawable/ic_baseline_phone_30" />
+-->
+
+
+    </LinearLayout>
+
+</RelativeLayout>

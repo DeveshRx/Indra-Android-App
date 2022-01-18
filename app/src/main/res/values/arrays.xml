@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Reply Preference -->
+
+    <string-array name="theme_day_night">
+        <item>System Default</item>
+        <item>Light Mode</item>
+        <item>Dark Mode</item>
+    </string-array>
+
+    <string-array name="user_status">
+        <item>Available</item>
+        <item>Busy</item>
+        <item>DND (Do-Not-Disturb)</item>
+    </string-array>
+</resources>

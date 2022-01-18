@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+File Used in WebRTCCallVoice.java
+-->
+<!-- tools:ignore is needed because lint thinks this can be replaced with a merge. Replacing this
+     with a merge causes the fullscreen SurfaceView not to be centered. -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_accent_primary_color"
+    tools:ignore="MergeRootFrame">
+
+
+    <LinearLayout
+        android:id="@+id/LLCallingLayer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_profile_black_shadow_inverse"
+        android:orientation="vertical">
+
+        <androidx.legacy.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <ImageView
+            android:id="@+id/CallingIMG"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:visibility="visible"
+            android:src="@drawable/ic_baseline_account_circle_30"
+            app:srcCompat="@drawable/ic_baseline_account_circle_30"
+            tools:ignore="UseAppTint" />
+
+        <TextView
+            android:id="@+id/CallingNameTextView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="User Name"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="34sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/CallingStatustextView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Calling..."
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/loadingAnimationView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:lottie_rawRes="@raw/material_wave_loading"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"/>
+
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/AlertCardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="10dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true"
+            app:contentPadding="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:tint="@android:color/holo_orange_dark"
+                    android:src="@drawable/ic_baseline_sentiment_very_dissatisfied_30"
+                    app:srcCompat="@drawable/ic_baseline_sentiment_very_dissatisfied_30" />
+
+                <TextView
+                    android:id="@+id/AlertCVText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="TextView" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/MicMuteTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alpha="0.5"
+            android:background="@color/app_accent_color"
+            android:text="Microphone is Mute"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/videoMuteTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alpha="0.5"
+            android:background="@color/app_accent_color"
+            android:text="Video is Mute"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LLController"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/SpeakerPhoneFAB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:alpha="0.8"
+                android:clickable="true"
+                android:onClick="SpeakerToggle"
+                app:backgroundTint="@color/trans_fab"
+                app:elevation="0dp"
+                app:srcCompat="@drawable/ic_baseline_speaker_phone_30" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:alpha="0.8"
+                android:clickable="true"
+                android:onClick="toggleMic"
+                app:backgroundTint="@color/trans_fab"
+                app:elevation="0dp"
+                app:srcCompat="@drawable/ic_baseline_mic_30"
+
+                />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:alpha="0.8"
+                android:clickable="true"
+                android:onClick="disconnectCallButton"
+                app:backgroundTint="@android:color/holo_red_light"
+                app:elevation="0dp"
+                app:srcCompat="@drawable/disconnect" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

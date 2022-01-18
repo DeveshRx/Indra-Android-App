@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<defaultsMap>
+    <entry>
+        <key>indra_version</key>
+        <value>0</value>
+    </entry>
+    <entry>
+        <key>indra_build_no</key>
+        <value>0</value>
+    </entry>
+
+
+    <entry>
+        <key>ads_enabled</key>
+        <value>false</value>
+    </entry>
+
+    <entry>
+        <key>welcome_message</key>
+        <value>Welcome to my awesome app!</value>
+    </entry>
+
+    <entry>
+        <key>use_turn_server</key>
+        <value>false</value>
+    </entry>
+
+</defaultsMap>

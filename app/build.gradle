@@ -1,0 +1,591 @@
+import java.util.regex.Matcher
+import java.util.regex.Pattern
+
+plugins {
+    id 'com.android.application'
+    id 'com.google.gms.google-services'
+}
+apply plugin: 'com.google.firebase.crashlytics'
+apply plugin: 'com.google.firebase.firebase-perf'
+//apply plugin: 'com.google.firebase.appdistribution'
+
+def debug_url_callnow
+def url_callnow
+
+def debug_url_ping
+def url_ping
+
+def url_getprofile
+def debug_url_getprofile
+
+def admob_app_id
+def admob_ad_int_id
+def admob_ad_banner_id1
+def admob_native_ad1
+
+def debug_apprtc_url
+def apprtc_url
+
+
+def debug_twilio_config_url
+def twilio_config_url
+
+def keySignFile
+def keySignPassword
+def keySignAlias
+def keySignAliasPassword
+
+def msAppCenterKey
+
+//def isinternal
+//isinternal = false
+// project.
+
+Properties properties = new Properties()
+/*
+//def lp = new File('local.properties')
+project.logger.info('Located local.properties file')
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+debug_url_callnow = properties.getProperty('debug_url_callnow')
+url_callnow = properties.getProperty('url_callnow')
+
+debug_url_getprofile = properties.getProperty('debug_url_getprofile')
+url_getprofile = properties.getProperty('url_getprofile')
+
+
+debug_url_ping = properties.getProperty('debug_url_ping')
+url_ping = properties.getProperty('url_ping')
+
+
+admob_app_id = properties.getProperty('admob_app_id')
+admob_ad_int_id = properties.getProperty('admob_ad_int_id')
+admob_ad_banner_id1 = properties.getProperty('admob_ad_banner_id1')
+admob_native_ad1 = properties.getProperty('ad_native1')
+
+debug_apprtc_url = properties.getProperty('debug_apprtc_url')
+apprtc_url = properties.getProperty('apprtc_url')
+
+msAppCenterKey=properties.getProperty('ms_app_center_key')
+
+
+keySignFile = properties.getProperty('keySignFile')
+keySignPassword = properties.getProperty('keySignPassword')
+keySignAlias = properties.getProperty('keySignAlias')
+keySignAliasPassword = properties.getProperty('keySignAliasPassword')
+*/
+
+
+debug_url_callnow = project.debug_url_callnow
+url_callnow = project.url_callnow
+
+debug_url_getprofile = project.debug_url_getprofile
+url_getprofile = project.url_getprofile
+
+
+debug_url_ping = project.debug_url_ping
+url_ping = project.url_ping
+
+def url_synccontact= project.url_synccontact
+def debug_url_synccontact= project.debug_url_synccontact
+
+admob_app_id = project.admob_app_id
+admob_ad_int_id = project.admob_ad_int_id
+admob_ad_banner_id1 = project.admob_ad_banner_id1
+admob_native_ad1 = project.admob_native_ad1
+
+debug_apprtc_url = project.debug_apprtc_url
+apprtc_url = project.apprtc_url
+
+msAppCenterKey=project.msAppCenterKey
+
+
+debug_twilio_config_url=project.debug_twilio_config_url
+twilio_config_url=project.twilio_config_url
+
+
+keySignFile = project.keySignFile
+keySignPassword = project.keySignPassword
+keySignAlias = project.keySignAlias
+keySignAliasPassword = project.keySignAliasPassword
+
+def isCICD = project.isCICD
+
+
+
+def AppVersionCode = 23
+def AppVersionName = "0.0.8.1"
+
+ext {
+    isinternal = false
+}
+
+
+android {
+
+    buildFeatures {
+        viewBinding true
+    }
+    compileSdk 31
+
+    signingConfigs {
+        release {
+                       keyAlias keySignAlias
+            keyPassword keySignAliasPassword
+            storeFile file(keySignFile)
+            storePassword keySignPassword
+   
+            if(isCICD=="true"){
+
+            }else{
+
+               }
+        
+        }
+    }
+    defaultConfig {
+        applicationId "devesh.ephrine"
+        minSdk 22
+        targetSdk 31
+         versionCode AppVersionCode
+        versionName AppVersionName
+        vectorDrawables.useSupportLibrary = true
+
+   
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+         resValue("string", "AdMob_App_Id", "ca-app-pub-3940256099942544~3347511713")
+    }
+
+      buildTypes {
+
+        debug {
+            applicationIdSuffix ".debug"
+            minifyEnabled true
+            debuggable true
+            shrinkResources true
+
+            resValue "string", "app_version_code", "\"" + AppVersionCode + "\""
+
+            resValue "string", "URL_CallNow", "\"" + debug_url_callnow + "\""
+            resValue "string", "URL_getProfile", "\"" + debug_url_getprofile + "\""
+            resValue "string", "URL_ping_user", "\"" + debug_url_ping + "\""
+            resValue "string", "URL_SyncContacts", "\"" + debug_url_synccontact + "\""
+            resValue "string", "URL_getTURNConfig", "\"" + debug_twilio_config_url + "\""
+
+            //   resValue "string", "AdMob_App_Package_Id", "com.google.android.gms.ads.APPLICATION_ID"
+            resValue("string", "AdMob_App_Id", "ca-app-pub-3940256099942544~3347511713")
+            resValue "string", "AdMob_Int_Id1", "ca-app-pub-3940256099942544/1033173712"
+            resValue "string", "AdMob_Banner_Id1", "ca-app-pub-3940256099942544/6300978111"
+            resValue "string", "AdMob_NativeAd1", "ca-app-pub-3940256099942544/2247696110"
+
+
+            resValue "string", "MS_AppCenter_API_Key", "00000000-0000-0000-0000-000000000000"
+
+            buildConfigField "String", "AppRTC_URL", "\"" + debug_apprtc_url + "\""
+
+            resValue "string", "app_version_name", "\"" + AppVersionName + " (Debug)" + "\""
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            // SPEEDUP BUILD
+            ext.enableCrashlytics = false
+            ext.alwaysUpdateBuildId = false
+
+
+        }
+
+        release {
+  applicationIdSuffix ".indra"
+            resValue "string", "app_version_code", "\"" + AppVersionCode + "\""
+
+
+            minifyEnabled true
+            shrinkResources true
+
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+
+def mFlavour=getCurrentFlavour()
+
+            if (mFlavour=="internal" || mFlavour=="robotest") {
+                resValue("string", "AdMob_App_Id", "ca-app-pub-3940256099942544~3347511713")
+                resValue "string", "AdMob_Int_Id1", "ca-app-pub-3940256099942544/1033173712"
+                resValue "string", "AdMob_Banner_Id1", "ca-app-pub-3940256099942544/6300978111"
+                resValue "string", "AdMob_NativeAd1", "ca-app-pub-3940256099942544/2247696110"
+                resValue "string", "MS_AppCenter_API_Key", "00000000-0000-0000-0000-000000000000"
+
+/*firebaseAppDistribution {
+                artifactType="APK"
+                releaseNotesFile="App Version: "+AppVersionName
+                groups="family-app-tester-group"
+            }
+*/
+
+            }else{
+                resValue("string","AdMob_App_Id", "\""+admob_app_id+"\"")
+                resValue "string", "AdMob_Int_Id1", "\"" + admob_ad_int_id + "\""
+                resValue "string", "AdMob_Banner_Id1", "\"" + admob_ad_banner_id1 + "\""
+                resValue "string", "AdMob_NativeAd1", "\"" + admob_native_ad1 + "\""
+                resValue "string", "MS_AppCenter_API_Key", "\"" + msAppCenterKey + "\""
+
+            }
+
+            // debuggable true
+            if(mFlavour=="internal" || mFlavour=="robotest"){
+                debuggable true
+                // AppVersionName = AppVersionName + " (Internal)"
+                resValue "string", "app_version_name", "\"" + AppVersionName + " (Internal)\""
+            }else if(mFlavour=="playstore"){
+                // AppVersionName = AppVersionName + " "
+                resValue "string", "app_version_name", "\"" + AppVersionName + " (Play Store)\""
+            }
+            else if(mFlavour=="galaxystore"){
+                // AppVersionName = AppVersionName + " (Galaxy)"
+                resValue "string", "app_version_name", "\"" + AppVersionName + " (Galaxy)\""
+
+            }
+            else if(mFlavour=="universal"){
+                //AppVersionName = AppVersionName + " (Web)"
+                resValue "string", "app_version_name", "\"" + AppVersionName + " (Web)\""
+
+            }else{
+                resValue "string", "app_version_name", "\"" + AppVersionName + "\""
+            }
+
+
+         //   resValue "string", "app_version_name", "\"" + AppVersionName + "\""
+
+            resValue "string", "URL_CallNow", "\"" + url_callnow + "\""
+            resValue "string", "URL_getProfile", "\"" + url_getprofile + "\""
+            resValue "string", "URL_ping_user", "\"" + url_ping + "\""
+            resValue "string", "URL_SyncContacts", "\"" + url_synccontact + "\""
+            resValue "string", "URL_getTURNConfig", "\"" + twilio_config_url + "\""
+            resValue "string", "AdMob_App_Package_Id", "com.google.android.gms.ads.APPLICATION_ID"
+
+            buildConfigField "String", "AppRTC_URL", "\"" + apprtc_url + "\""
+
+        
+                    if(isCICD=="true"){
+
+            }else{
+            }
+            
+signingConfig signingConfigs.release
+
+
+
+        }
+
+
+
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    flavorDimensions 'store'
+
+
+    productFlavors {
+        PlayStore {
+            dimension 'store'
+            //        resValue "string", "app_version_name", "\"" + AppVersionName + "\""
+          //  AppVersionName = AppVersionName + ' (Play Store)'
+        versionNameSuffix " (Play Store)"
+
+            resValue "bool", "firebase_analytics_collection_deactivated", "false"
+
+
+        }
+        GalaxyStore {
+            dimension 'store'
+            //     resValue "string", "app_version_name", "\"" + AppVersionName +" (Galaxy)" + "\""
+         //   AppVersionName = AppVersionName + ' (Galaxy)'
+            resValue "bool", "firebase_analytics_collection_deactivated", "false"
+                    versionNameSuffix " (Galaxy)"
+
+
+        }
+        Universal {
+            dimension 'store'
+            //   resValue "string", "app_version_name", "\"" + AppVersionName + "\""
+            resValue "bool", "firebase_analytics_collection_deactivated", "false"
+       //     AppVersionName = AppVersionName + ' (Web)'
+                           versionNameSuffix " (Web)"
+
+
+        }
+        Internal {
+            dimension 'store'
+            applicationIdSuffix ".internal"
+            //   resValue "string", "app_version_name", "\"" + AppVersionName+" (Internal)" + "\""
+            resValue "bool", "firebase_analytics_collection_deactivated", "true"
+                                versionNameSuffix " (Internal)"
+        }
+
+        RoboTest {
+            dimension 'store'
+
+            //   resValue "string", "app_version_name", "\"" + AppVersionName+" (Internal)" + "\""
+            resValue "bool", "firebase_analytics_collection_deactivated", "true"
+            versionNameSuffix " (RoboTest)"
+        }
+
+    }
+
+
+
+    lintOptions {
+        checkReleaseBuilds false
+    }
+
+// SPEED UP ANDROID STUDIO !
+    dexOptions {
+        incremental true
+    }
+}
+
+
+dependencies {
+  implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
+ //   implementation project(path: ':FriendsList')
+    implementation project(path: ':common')
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+//    implementation project(path: ':profile')
+    implementation project(path: ':Notifications')
+
+    implementation 'androidx.preference:preference:1.1.1'
+ //   implementation project(path: ':EPOCH')
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    implementation "androidx.fragment:fragment:1.4.0"
+
+    //Firebase
+    implementation platform('com.google.firebase:firebase-bom:29.0.3')
+
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-config'
+    implementation 'com.google.firebase:firebase-database'
+    implementation 'com.google.firebase:firebase-messaging'
+    implementation 'com.google.firebase:firebase-storage'
+    // implementation 'com.google.firebase:firebase-messaging-directboot:20.2.0'
+    implementation 'com.google.android.gms:play-services-ads:20.5.0'
+   implementation 'com.google.firebase:firebase-crashlytics'
+    implementation 'com.google.firebase:firebase-perf'
+    implementation 'com.google.firebase:firebase-installations'
+//    implementation 'com.google.firebase:firebase-appdistribution-gradle:2.2.0'
+
+    //debugImplementation 'com.google.firebase:firebase-appcheck-debug:16.0.0-beta02'
+    //releaseImplementation 'com.google.firebase:firebase-appcheck-safetynet:16.0.0-beta02'
+    implementation 'com.google.firebase:firebase-appcheck-safetynet:16.0.0-beta04'
+ //   releaseImplementation 'com.google.firebase:firebase-crashlytics'
+//    releaseImplementation 'com.google.firebase:firebase-perf'
+
+    //SMS Auto retrive
+    //  implementation 'com.google.android.gms:play-services-auth:19.0.0'
+    // implementation 'com.google.android.gms:play-services-auth-api-phone:17.5.0'
+    implementation 'com.firebaseui:firebase-ui-auth:7.2.0'
+
+    // Google Libphonenumber
+    implementation 'com.googlecode.libphonenumber:libphonenumber:8.12.33'
+
+    // okhttp
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.9.0"))
+    implementation("com.squareup.okhttp3:okhttp")
+    implementation("com.squareup.okhttp3:logging-interceptor")
+
+    // GSON
+    implementation 'com.google.code.gson:gson:2.8.9'
+
+    // Room Database
+    def room_version = "2.4.0"
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+    // optional - RxJava2 support for Room
+    implementation "androidx.room:room-rxjava2:$room_version"
+    // optional - RxJava3 support for Room
+    implementation "androidx.room:room-rxjava3:$room_version"
+    // optional - Guava support for Room, including Optional and ListenableFuture
+    implementation "androidx.room:room-guava:$room_version"
+    // optional - Test helpers
+    testImplementation "androidx.room:room-testing:$room_version"
+
+    //Chrome custom tabs
+    implementation "androidx.browser:browser:1.4.0"
+
+    //SwipeToRefresh
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+
+
+    // Work Manager
+    def work_version = "2.7.1"
+
+    // (Java only)
+    implementation "androidx.work:work-runtime:$work_version"
+    // Kotlin + coroutines
+//    implementation "androidx.work:work-runtime-ktx:$work_version"
+    // optional - RxJava2 support
+    implementation "androidx.work:work-rxjava2:$work_version"
+    // optional - GCMNetworkManager support
+    implementation "androidx.work:work-gcm:$work_version"
+    // optional - Test helpers
+    androidTestImplementation "androidx.work:work-testing:$work_version"
+    // optional - Multiprocess support
+    implementation "androidx.work:work-multiprocess:$work_version"
+
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+
+    //Recycleview decor
+    implementation 'it.xabaras.android:recyclerview-swipedecorator:1.2.3'
+
+    //Image CircularView
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+//    implementation project(':flutter')
+
+
+//Google Play Core
+    // This dependency is downloaded from the Google’s Maven repository.
+    // So, make sure you also include that repository in your project's build.gradle file.
+    implementation 'com.google.android.play:core:1.10.2'
+
+    //EasyPermission
+    implementation 'pub.devrel:easypermissions:3.0.0'
+
+    //Country select
+    implementation 'com.hbb20:ccp:2.5.4'
+
+    //AdMob Mediatation
+    implementation 'com.google.ads.mediation:facebook:6.8.0.0'
+    implementation 'com.google.ads.mediation:mopub:5.18.0.0'
+
+
+//MS App Center
+ def appCenterSdkVersion = '4.2.0'
+    implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
+    implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
+
+   UniversalImplementation "com.microsoft.appcenter:appcenter-distribute:${appCenterSdkVersion}"
+   InternalImplementation "com.microsoft.appcenter:appcenter-distribute:${appCenterSdkVersion}"
+
+    PlayStoreImplementation "com.microsoft.appcenter:appcenter-distribute-play:${appCenterSdkVersion}"
+    GalaxyStoreImplementation "com.microsoft.appcenter:appcenter-distribute-play:${appCenterSdkVersion}"
+    RoboTestImplementation "com.microsoft.appcenter:appcenter-distribute-play:${appCenterSdkVersion}"
+
+//EasyImage
+    implementation 'com.github.jkwiecien:EasyImage:3.2.0'
+
+    // Glide
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+
+    //Image cropper
+    implementation 'com.github.yalantis:ucrop:2.2.6'
+
+    //Image CircularView
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    //Image compress
+    implementation 'id.zelory:compressor:2.1.1' //2.1.1 is imp
+
+//Flutter
+// debugImplementation 'devesh.ephrine.flutter_module:flutter_debug:1.0'
+  //    releaseImplementation 'devesh.ephrine.flutter_module:flutter_release:1.0'
+
+
+    //Onboarding Screen
+    implementation 'com.codemybrainsout.onboarding:onboarder:1.0.4'
+
+    // Lottie files
+    implementation "com.airbnb.android:lottie:4.2.0"
+
+}
+
+
+def getCurrentFlavour() {
+    Gradle gradle = getGradle()
+    String tskReqStr = gradle.getStartParameter().getTaskRequests().toString()
+
+    Pattern pattern
+
+    if (tskReqStr.contains("assemble"))
+        pattern = Pattern.compile("assemble(\\w+)(Release|Debug)")
+    else
+        pattern = Pattern.compile("generate(\\w+)(Release|Debug)")
+
+    Matcher matcher = pattern.matcher(tskReqStr)
+
+    if (matcher.find()) {
+        println "\n"
+        println "CURRENT FLAVOR: " + matcher.group(1).toLowerCase()
+        println "\n"
+        return matcher.group(1).toLowerCase()
+        // Changing to 2 will return build type, 1 provides product flavor
+    } else {
+        println "FLAVOR ERROR NO MATCH FOUND"
+        return ""
+    }
+}
+
+/*   if (cflavor == "internal") {
+             //   resValue "string", "AdMob_App_Id", "ca-app-pub-3940256099942544~3347511713"
+                resValue "string", "AdMob_Int_Id1", "ca-app-pub-3940256099942544/1033173712"
+                resValue "string", "AdMob_Banner_Id1", "ca-app-pub-3940256099942544/6300978111"
+                resValue "string", "AdMob_NativeAd1", "ca-app-pub-3940256099942544/2247696110"
+
+                resValue "string", "app_version_name", "\"" + AppVersionName + " (Internal)\""
+                //  debuggable true
+
+            } else {
+             //   resValue "string", "AdMob_App_Id", "\"" + admob_app_id + "\""
+                resValue "string", "AdMob_Int_Id1", "\"" + admob_ad_int_id + "\""
+                resValue "string", "AdMob_Banner_Id1", "\"" + admob_ad_banner_id1 + "\""
+                resValue "string", "AdMob_NativeAd1", "\"" + admob_native_ad1 + "\""
+
+                resValue "string", "app_version_name", "\"" + AppVersionName + "\""
+
+            }*/
+
+
+/*  def cflavor
+  cflavor = ""
+  Gradle gradle = getGradle()
+  String tskReqStr = gradle.getStartParameter().getTaskRequests().toString()
+
+  Pattern pattern
+
+  if (tskReqStr.contains("assemble"))
+      pattern = Pattern.compile("assemble(\\w+)(Release|Debug)")
+  else
+      pattern = Pattern.compile("generate(\\w+)(Release|Debug)")
+
+  Matcher matcher = pattern.matcher(tskReqStr)
+
+  if (matcher.find()) {
+      println "\n"
+      println "CURRENT FLAVOR in Release: " + matcher.group(1).toLowerCase()
+      println "\n"
+      cflavor = matcher.group(1).toLowerCase()
+      // Changing to 2 will return build type, 1 provides product flavor
+  } else {
+      println "FLAVOR ERROR NO MATCH FOUND in Release"
+      return ""
+  }*/

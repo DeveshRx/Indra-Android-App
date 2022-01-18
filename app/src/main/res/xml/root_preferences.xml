@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <Preference
+        app:icon="@drawable/ic_baseline_account_circle_30"
+        app:key="myprofile"
+        app:title="My Profile" />
+    <Preference
+        app:icon="@drawable/ic_baseline_sync_30"
+        app:key="SyncContacts"
+        app:summary="Find friends who are on App"
+        app:title="Sync Contacts" />
+    <Preference
+        app:icon="@drawable/ic_baseline_videocam_30"
+        app:key="vidadv"
+        app:title="Call Settings" />
+    <Preference
+        android:key="notif"
+        app:icon="@drawable/ic_circle_notifications_white_30dp"
+        app:title="Manage Notifications" />
+    <Preference
+        app:icon="@drawable/ic_palette_black_30dp"
+        app:key="theme"
+        app:summary="Customize the way app looks &amp; feels"
+        app:title="App Theme" />
+    <Preference
+        app:icon="@drawable/ic_baseline_privacy_tip_30"
+        app:key="secpri"
+        app:summary="Learn more"
+        app:title="Privacy &amp; Security" />
+
+
+    <!--
+    app:icon="@drawable/ic_round_build_circle_35"
+    -->
+    <PreferenceCategory
+        android:title="About"
+        app:iconSpaceReserved="false">
+
+        <Preference
+            app:iconSpaceReserved="false"
+            app:summary="@string/app_version_name"
+            app:title="Version"
+
+            />
+        <Preference
+            app:iconSpaceReserved="false"
+            app:summary="@string/app_version_code"
+            app:title="Build Number" />
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

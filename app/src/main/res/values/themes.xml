@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="Theme.VideoCaliingApp" parent="Theme.MaterialComponents.DayNight"> <!-- Theme.MaterialComponents.DayNight.DarkActionBar-->
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryVariant">@color/primaryColor</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!--Secondary brand color.-->
+        <item name="colorSecondary">@color/secondaryColor</item>
+        <item name="colorSecondaryVariant">@color/secondaryDarkColor</item>
+        <item name="colorOnSecondary">@color/black</item>
+
+        <item name="android:windowLightStatusBar">true</item>
+        <!--
+         Status bar color.
+               <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>-->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/BG_Blank</item>
+        <!--  Customize your theme here. -->
+        <item name="preferenceTheme">@style/PreferenceTheme</item>
+
+    </style>
+
+
+    <style name="PreferenceTheme" parent="@style/PreferenceThemeOverlay.v14.Material">
+        <item name="android:tint">@color/app_accent_color</item>
+
+    </style>
+
+</resources>

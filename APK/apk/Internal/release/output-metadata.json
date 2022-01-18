@@ -1,0 +1,20 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "devesh.ephrine.internal.indra",
+  "variantName": "InternalRelease",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 23,
+      "versionName": "0.0.8.1 (Internal)",
+      "outputFile": "app-Internal-release.apk"
+    }
+  ],
+  "elementType": "File"
+}
